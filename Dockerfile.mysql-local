@@ -1,0 +1,8 @@
+# Use a imagem oficial do MySQL como base
+FROM mysql:latest
+
+# Configurações específicas do MySQL
+ENV MYSQL_ROOT_PASSWORD=root
+ENV MYSQL_DATABASE=bd_oficina
+ENV MYSQL_USER=hugo
+ENV MYSQL_PASSWORD=123

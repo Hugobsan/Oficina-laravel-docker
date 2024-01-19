@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  laravel-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.oficina-laravel
+    image: oficina-laravel:v1.0.0
+    container_name: laravel-app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mysql-local
+    networks:
+      - laravel-network
+
+  mysql-local:
+    build:
+      context: .
+      dockerfile: Dockerfile.mysql-local
+    image: mysql-local
+    container_name: mysql-local
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    networks:
+      - laravel-network
+
+networks:
+  laravel-network:
+    driver: bridge
