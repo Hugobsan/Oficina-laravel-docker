@@ -1,18 +1,18 @@
-version: '3.8'
+version: '3.8' // Essa tag senore ten que ter
 
 services:
-  laravel-app:
+  laravel-app: //Nome do serviço da aplicação
     build:
-      context: .
-      dockerfile: Dockerfile.oficina-laravel
-    image: oficina-laravel:v1.0.0
-    container_name: laravel-app
+      context: . // Contexto (pasta) que o console vai abrir
+      dockerfile: Dockerfile.oficina-laravel //Apontando onde está o dockerfile da aplicação
+    image: oficina-laravel:v1.0.0 // Apontando a imagem que vai ser usada (já tem que estar no ambiente do docker, eu acho)
+    container_name: laravel-app //Definindo o nome do container (pra acesso mais rápido na rede
     ports:
-      - "8000:8000"
+      - "8000:8000" //Portas de comunicação (a porta que a aplicação vai fornecer:a porta que a sua máquina vai enxergar a aplicação)
     depends_on:
-      - mysql-local
+      - mysql-local //Estabelecendo dependência com o mysql
     networks:
-      - laravel-network
+      - laravel-network //Colocando na mesma rede
 
   mysql-local:
     build:
